@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">HomeWork_2</string>
+    
+    <string name="take_photo_btn">Take a Photo</string>
+    <string name="restart_btn">Restart</string>
+    <string name="name_field">Fill your name, please</string>
+
+</resources>
