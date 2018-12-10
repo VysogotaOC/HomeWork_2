@@ -20,13 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         takeaPhoto.setOnClickListener { v -> photo(v) }
-        restartBTN.setOnClickListener { v -> restart(v) }
     }
 
     fun photo(v: View){
         editText = findViewById<View>(R.id.editText_1) as EditText
-        val temp = editText.text.toString().trim()
-        textOfYourName.text = temp
+        var temp = editText.text.toString().trim()
         if(temp != ""){
             val callCameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
             if(callCameraIntent.resolveActivity(packageManager) != null){
@@ -37,22 +35,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun restart(v: View){
-        val intent = Intent(this, MainActivity::class.java)
-        startActivity(intent)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         when(requestCode){
             CAMERA_REQUEST_CODE -> {
                 if(resultCode == Activity.RESULT_OK && data != null){
-                    yourPhoto.setImageBitmap(data.extras.get("data") as Bitmap)
-                    textOfYourName.setVisibility(View.VISIBLE);
-                    editText_1.setVisibility(View.GONE);
-                    takeaPhoto.setVisibility(View.GONE);
-                    restartBTN.setVisibility(View.VISIBLE);
+                    editText = findViewById<View>(R.id.editText_1) as EditText
+                    var temp = editText.text.toString().trim()
+                    val intent = Intent(this, Main2Activity::class.java)
+                    intent.putExtra("image", data.extras.get("data") as Bitmap)
+                    intent.putExtra("name", temp)
+                    startActivity(intent)
                 }
             }
             else -> {

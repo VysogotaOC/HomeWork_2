@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="app_name">ДЗ_2</string>
     <string name="take_photo_btn">Сделать Фото</string>
     <string name="restart_btn">Перезагрузить</string>
     <string name="name_field">Укажите своё имя, пожалуйста</string>
